@@ -51,6 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Report Include="Hesap Özeti.rdl" />
+    <Report Include="Kasa Ekstresi.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

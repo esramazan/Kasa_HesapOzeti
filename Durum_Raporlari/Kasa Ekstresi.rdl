@@ -3,56 +3,67 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DS_Kasa_Hesap_Özeti">
+    <DataSource Name="DS_KasaEkstre">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=DESKTOP-71EC8I4;Initial Catalog=BEEONE</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
-      <rd:DataSourceID>75436a16-0670-4be2-a7a3-c949ce6251fe</rd:DataSourceID>
+      <rd:DataSourceID>7d654db5-0021-4339-b610-fc856ceadd10</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>DS_Kasa_Hesap_Özeti</DataSourceName>
+        <DataSourceName>DS_KasaEkstre</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@KasaKodu">
-            <Value>=Parameters!KasaKodu.Value</Value>
+          <QueryParameter Name="@Bas_tar">
+            <Value>=Parameters!Bas_tar.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Bit_tar">
+            <Value>=Parameters!Bit_tar.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        kasa_kodu, adi, donem, Giren, cikan, Kalan, Bakiye_Turu
-FROM            ONE_V_001_KASA_HESAP_OZETI
-WHERE        (kasa_kodu = @KasaKodu)</CommandText>
+        <CommandText>SELECT        Kasa_Kodu, Kasa_Adi, FisNo, FisTarihi, FisTuru, Detay_Aciklama, Tahsilatlar, Odemeler, Birimi
+FROM            ONE_V_001_KASA_EKSTRESI
+WHERE        (FisTarihi BETWEEN @Bas_tar AND @Bit_tar)</CommandText>
       </Query>
       <Fields>
-        <Field Name="kasa_kodu">
-          <DataField>kasa_kodu</DataField>
+        <Field Name="Kasa_Kodu">
+          <DataField>Kasa_Kodu</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="adi">
-          <DataField>adi</DataField>
+        <Field Name="Kasa_Adi">
+          <DataField>Kasa_Adi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="donem">
-          <DataField>donem</DataField>
+        <Field Name="FisNo">
+          <DataField>FisNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Giren">
-          <DataField>Giren</DataField>
+        <Field Name="FisTarihi">
+          <DataField>FisTarihi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FisTuru">
+          <DataField>FisTuru</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Detay_Aciklama">
+          <DataField>Detay_Aciklama</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tahsilatlar">
+          <DataField>Tahsilatlar</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="cikan">
-          <DataField>cikan</DataField>
+        <Field Name="Odemeler">
+          <DataField>Odemeler</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="Kalan">
-          <DataField>Kalan</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="Bakiye_Turu">
-          <DataField>Bakiye_Turu</DataField>
+        <Field Name="Birimi">
+          <DataField>Birimi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -69,7 +80,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Hesap Özeti</Value>
+                    <Value>Kasa Ekstresi</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -82,7 +93,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>7in</Width>
+            <Width>9in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -93,6 +104,12 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
           <Tablix Name="table1">
             <TablixBody>
               <TablixColumns>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
@@ -128,7 +145,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>kasa kodu</Value>
+                                  <Value>Kasa Kodu</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -166,7 +183,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>adi</Value>
+                                  <Value>Kasa Adi</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -204,7 +221,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>donem</Value>
+                                  <Value>Fis No</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -242,7 +259,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Giren</Value>
+                                  <Value>Fis Tarihi</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -251,10 +268,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <FontFamily />
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox5</rd:DefaultName>
@@ -283,7 +297,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>cikan</Value>
+                                  <Value>Fis Turu</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -292,10 +306,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <FontFamily />
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox6</rd:DefaultName>
@@ -324,7 +335,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Kalan</Value>
+                                  <Value>Detay Aciklama</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -333,10 +344,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <FontFamily />
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox7</rd:DefaultName>
@@ -365,7 +373,89 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Bakiye Turu</Value>
+                                  <Value>Tahsilatlar</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <FontFamily />
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Odemeler</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <FontFamily />
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox9</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox10">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Birimi</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -377,7 +467,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox8</rd:DefaultName>
+                          <rd:DefaultName>textbox10</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -401,14 +491,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="kasa_kodu">
+                        <Textbox Name="Kasa_Kodu">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!kasa_kodu.Value</Value>
+                                  <Value>=Fields!Kasa_Kodu.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -418,7 +508,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>kasa_kodu</rd:DefaultName>
+                          <rd:DefaultName>Kasa_Kodu</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -437,14 +527,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="adi">
+                        <Textbox Name="Kasa_Adi">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!adi.Value</Value>
+                                  <Value>=Fields!Kasa_Adi.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -454,7 +544,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>adi</rd:DefaultName>
+                          <rd:DefaultName>Kasa_Adi</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -473,14 +563,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="donem">
+                        <Textbox Name="FisNo">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!donem.Value</Value>
+                                  <Value>=Fields!FisNo.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -490,7 +580,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>donem</rd:DefaultName>
+                          <rd:DefaultName>FisNo</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -509,14 +599,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Giren">
+                        <Textbox Name="FisTarihi">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Giren.Value</Value>
+                                  <Value>=Fields!FisTarihi.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -526,7 +616,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Giren</rd:DefaultName>
+                          <rd:DefaultName>FisTarihi</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -545,14 +635,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="cikan">
+                        <Textbox Name="FisTuru">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cikan.Value</Value>
+                                  <Value>=Fields!FisTuru.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -562,7 +652,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>cikan</rd:DefaultName>
+                          <rd:DefaultName>FisTuru</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -581,14 +671,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Kalan">
+                        <Textbox Name="Detay_Aciklama">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Kalan.Value</Value>
+                                  <Value>=Fields!Detay_Aciklama.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -598,7 +688,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Kalan</rd:DefaultName>
+                          <rd:DefaultName>Detay_Aciklama</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -617,14 +707,14 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Bakiye_Turu">
+                        <Textbox Name="Tahsilatlar">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Bakiye_Turu.Value</Value>
+                                  <Value>=Fields!Tahsilatlar.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -634,7 +724,79 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Bakiye_Turu</rd:DefaultName>
+                          <rd:DefaultName>Tahsilatlar</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Odemeler">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Odemeler.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Odemeler</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Birimi">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Birimi.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Birimi</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -657,6 +819,8 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -689,7 +853,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
             <Height>0.43in</Height>
-            <Width>7in</Width>
+            <Width>9in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
@@ -697,7 +861,7 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
         <Height>0.86in</Height>
         <Style />
       </Body>
-      <Width>7in</Width>
+      <Width>9in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -708,25 +872,39 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="KasaKodu">
+    <ReportParameter Name="Bas_tar">
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>100.01.001</Value>
+          <Value>01.01.2021</Value>
         </Values>
       </DefaultValue>
-      <Prompt>Kasa Kodu</Prompt>
+      <Prompt>Başlangıç Tarihi</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Bit_tar">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>31.12.2021</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Bitiş Tarihi</Prompt>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>KasaKodu</ParameterName>
+          <ParameterName>Bas_tar</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Bit_tar</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
@@ -734,5 +912,5 @@ WHERE        (kasa_kodu = @KasaKodu)</CommandText>
   <Language>tr-TR</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>d5a95091-3226-4fa9-b266-81b0027907a5</rd:ReportID>
+  <rd:ReportID>d63c03d1-cfff-4b34-8b8e-5e96ce35680d</rd:ReportID>
 </Report>
